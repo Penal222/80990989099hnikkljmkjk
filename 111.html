@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Зелёный маршрут — экопрогулки по городу</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #1f3324;
+      background: #f4f9f4;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #2e7d32, #66bb6a);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.6rem; margin-bottom: 12px; }
+    header p { font-size: 1.2rem; opacity: 0.9; }
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 32px;
+      background: #fff;
+      color: #2e7d32;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: scale(1.05); }
+    nav {
+      background: #1b4d24;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #c8e6c9;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+    }
+    nav a:hover { color: #fff; }
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    h2 { font-size: 2rem; margin-bottom: 24px; color: #1b4d24; }
+    .cards { display: flex; flex-wrap: wrap; gap: 20px; }
+    .card {
+      flex: 1 1 250px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+    .card h3 { margin-bottom: 10px; }
+    .card .emoji { font-size: 2rem; }
+    form {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 480px;
+    }
+    input, select {
+      padding: 12px;
+      border: 1px solid #a5d6a7;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 14px;
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover { background: #1b5e20; }
+    footer {
+      background: #1b4d24;
+      color: #c8e6c9;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.9rem;
+    }
+    #thanks {
+      display: none;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 Зелёный маршрут</h1>
+    <p>Экопрогулки по городу: парки, скверы и скрытые уголки природы</p>
+    <a href="#routes" class="btn">Выбрать маршрут</a>
+  </header>
+
+  <nav>
+    <a href="#routes">Маршруты</a>
+    <a href="#join">Записаться</a>
+  </nav>
+
+  <section id="routes">
+    <h2>Популярные маршруты</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🌳</div>
+        <h3>Тихий парк</h3>
+        <p>Спокойная прогулка по старым аллеям. 3 км, 1,5 часа. Подходит для семей с детьми.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🦆</div>
+        <h3>Птичий пруд</h3>
+        <p>Наблюдение за водоплавающими птицами. 2 км, 1 час. Возьмите бинокль!</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🌾</div>
+        <h3>Луговые холмы</h3>
+        <p>Дикие луга и виды на закат. 6 км, 3 часа. Средняя сложность.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <h2>Записаться на прогулку</h2>
+    <form onsubmit="return submitForm(event)">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <input type="email" id="email" placeholder="Электронная почта" required>
+      <select id="route">
+        <option>Тихий парк</option>
+        <option>Птичий пруд</option>
+        <option>Луговые холмы</option>
+      </select>
+      <button type="submit">Отправить заявку</button>
+      <span id="thanks">Спасибо! Мы напишем вам на почту 🌱</span>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Зелёный маршрут. Гуляйте, дышите, отдыхайте.
+  </footer>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      document.getElementById('thanks').textContent =
+        'Спасибо, ' + name + '! Мы напишем вам на почту 🌱';
+      document.getElementById('thanks').style.display = 'inline';
+      event.target.reset();
+      return false;
+    }
+  </script>
+
+</body>
+</html>
